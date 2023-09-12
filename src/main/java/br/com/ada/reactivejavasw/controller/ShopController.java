@@ -18,10 +18,10 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-    @PostMapping
+    @PostMapping("/purchase")
     @ResponseStatus(value = HttpStatus.CREATED)
     @Operation(description = "Create purchase shop")
-    public Mono<ResponseDTO> create(@RequestHeader("code") String code) {
+    public Mono<ResponseDTO<OrderDTO>> create(@RequestHeader("code") String code) {
         return this.shopService.create(code);
     }
 
